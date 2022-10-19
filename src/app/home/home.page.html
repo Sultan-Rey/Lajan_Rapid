@@ -1,0 +1,118 @@
+<ion-header  mode=ios>
+  <ion-toolbar  color="dark">
+    <ion-title>
+      LAJAN RAPID
+     </ion-title>
+  </ion-toolbar>
+  <ion-buttons>
+    <ion-item-divider>
+      <ion-label>Rapid, fasil epi garanti</ion-label>
+    </ion-item-divider>
+  </ion-buttons>
+ </ion-header>
+
+<ion-content>
+
+  <div  class="ion-padding">
+
+   
+    <div>
+
+      <div class="container-fluid border rounded">
+        <ion-item lines="none" >
+          <ion-label>Rapid balance :</ion-label>
+          <ion-badge slot="end" color="medium">{{account.amount | currency}}</ion-badge>
+        </ion-item>
+      </div>
+     <div class="container-fluid border mt-3">
+        <ion-item>
+          <ion-label>Refill your account</ion-label>
+          <ion-chip slot="end">Devise : {{account.devise}}</ion-chip>
+        </ion-item>
+        <ion-item-sliding>
+          <ion-slides [options]="{ slidesPerView: '1.5', zoom: false, grabCursor: true }">
+            <ng-container *ngIf="account.devise=='USD'">
+              <ion-slide (click)="refill('USD',star)" *ngFor="let star of reedemUSD"><ion-card>
+                <ion-card-content>
+                  <ion-card-title>{{star|currency}}</ion-card-title>
+                  <ion-card-subtitle>Add {{star|currency}} to your star card</ion-card-subtitle>
+                </ion-card-content>
+                </ion-card></ion-slide>
+            </ng-container>
+            <ng-container *ngIf="account.devise=='HTG'">
+              <ion-slide *ngFor="let star of reedemHTG"><ion-card>
+                <ion-card-content>
+                  <ion-card-title>{{star}} gdes</ion-card-title>
+                  <ion-card-subtitle>Add {{star}} gdes to your star card</ion-card-subtitle>
+                </ion-card-content>
+                </ion-card></ion-slide>
+            </ng-container>
+          
+    
+          </ion-slides>
+        </ion-item-sliding>
+      </div>
+    
+      <div class="container-fluid border mt-3">
+        <ion-list>
+          <ion-item><ion-label>Reedem Historic</ion-label></ion-item>
+          <ion-row>
+            <ion-col size="7"><b>Amount</b></ion-col>
+            <ion-col ><b>purchased date</b></ion-col>
+          </ion-row>
+          <ion-row *ngFor="let reedem of account.refillHistoric">
+            <ion-col size="7"><ion-label>{{reedem.amount}}</ion-label></ion-col>
+            <ion-col ><ion-label>{{reedem.date|date}}</ion-label></ion-col>
+          </ion-row>
+          <ion-item><ion-label>Total Refilling</ion-label>
+                    <ion-badge slot="end">0.00$</ion-badge>
+          </ion-item>
+        </ion-list>
+        
+      </div>
+    
+      <div class="container-fluid border mt-3">
+        <ion-list>
+          <ion-item><ion-label>Transactions</ion-label></ion-item>
+          <ion-row >
+            <ion-col size="4"><b>Id</b></ion-col>
+            <ion-col size="4"><b>Amount</b></ion-col>
+            <ion-col ><b>Transaction date</b></ion-col>
+          </ion-row>
+          <ion-row *ngFor="let transac of account.transaction">
+            <ion-col size="4"><ion-label> {{transac.id}} </ion-label></ion-col>
+            <ion-col size="4"><ion-label>{{transac.amount}}</ion-label></ion-col>
+            <ion-col ><ion-label>{{transac.date|date}}</ion-label></ion-col>
+          </ion-row>
+          <ion-item><ion-label>Total Transactions</ion-label>
+                    <ion-badge slot="end">{{totalTransac|currency}}</ion-badge>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+    <div class="row mt-3 p-3 align-right">
+      <div class="col-lg-9 col-md-9 col-9">
+        <ion-fab (click)="OpenSettingDialog()">
+          <ion-fab-button color="light">
+             <ion-icon size="large" name="settings"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <div class="col-lg-3 col-md-3 col-3">
+        <ion-fab (click)="OpenSenderDialog()">
+          <ion-fab-button >
+            <ion-thumbnail >
+              <ion-img src="../../assets/icon/logo_lajanrapid.png"></ion-img>
+            </ion-thumbnail>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+        
+      
+      
+    </div>
+  </div>
+  
+ 
+</ion-content>

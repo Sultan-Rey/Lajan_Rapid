@@ -1,0 +1,7 @@
+{
+  "name": "KADMIN",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

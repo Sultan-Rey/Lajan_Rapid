@@ -1,0 +1,82 @@
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-title>LAJAN RAPID</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+  <div class="container ion-padding">
+    <ion-slide>
+      <ion-img  class="img" src="../../assets/icon/logo_lajanrapid.png"></ion-img>
+    </ion-slide>
+      <div class="col-lg-4 col-md-12 col-12">
+        <div class="border rounded p-3 bg-color-yellow">
+          <ion-slide>
+            <ion-card-title>Login</ion-card-title>
+          </ion-slide>
+         <form #loginForm="ngForm" (ngSubmit)="onSubmitForm(loginForm)">
+          <ion-item lines="none" class="bg-color-yellow">
+            <ion-label class="p-2" position="floating"><ion-icon name="person"></ion-icon>Email or username ? </ion-label>
+         <div class="form-control form-control-sm">
+          <ion-buttons class="form-group">
+            <ion-input type="text" name="username" id="un" [(ngModel)]="dataUser.mail" required></ion-input>
+          </ion-buttons>
+         </div>
+          </ion-item>
+          
+          
+          <ion-item lines="none" class="bg-color-yellow">
+              <ion-label class="p-2" position="floating"><ion-icon name="lock-closed"></ion-icon>Password ? </ion-label>
+            <div class="form-control form-control-sm">
+              <ion-buttons class="form-group">
+                <ion-input type="password" name="password" id="pd"   [(ngModel)]="dataUser.password"></ion-input>
+              </ion-buttons>
+            </div>
+          </ion-item>
+      
+          <ion-item lines="none" class="pt-4 bg-color-yellow">
+          
+            <button type="submit" class="btn btn-lg btn-dark form-group" >Connexion</button>
+          
+            <ion-button slot="end">
+              log with <ion-icon name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-item>
+         </form>
+           
+
+          <ion-item class="bg-color-yellow">
+            <ion-label>Forgot my password ?</ion-label>
+          </ion-item>
+      
+        
+    
+      <div id="signup">
+        <ion-label button color="primary">I don't have account, create one free</ion-label>
+    </div>
+    
+      </div>
+      <ion-slide>
+           <ion-item-group>
+            <ion-label class="p-3">Multiple payments method accepted</ion-label>
+         <ion-buttons>
+          <ion-thumbnail>
+            <ion-img src="../../assets/icon/paypal.png"></ion-img>
+          </ion-thumbnail>
+          <ion-thumbnail>
+            <ion-img src="../../assets/icon/Google-Pay-Logo.png"></ion-img>
+          </ion-thumbnail>
+          <ion-thumbnail>
+            <ion-img src="../../assets/icon/moncash.png"></ion-img>
+          </ion-thumbnail>
+         </ion-buttons>
+           
+           
+        </ion-item-group>
+      </ion-slide>
+      
+     </div>
+    </div>
+</ion-content>
+

@@ -1,0 +1,49 @@
+<div class="container-fluid p-4">
+
+  <form *ngIf="!hasToTransfer">
+    <div class="form-group row">
+      <label for="amount" class="col-sm-2 col-form-label">Transfer amount</label>
+      <div class="col-sm-10">
+        <input type="number" [(ngModel)]="transfertInstruction.amount" name="amount" class="form-control" id="amount" value="0">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="pin" class="col-sm-2 col-form-label">Beneficer pin</label>
+      <div class="col-sm-10">
+        <input type="text" [(ngModel)]="transfertInstruction.beneficerId" name="beneficer" class=" form-control" id="pin" placeholder="Pin of the money's reciever">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Pay tranfer method</label>
+      <ion-select class="form-control" placeholder="choose a method..." [(ngModel)]="transfertInstruction.paymethod" name="paymethod" id="exampleFormControlSelect1">
+        <ion-select-option value="MC">Moncash</ion-select-option>
+        <ion-select-option value="BA">Bank account</ion-select-option>
+        <ion-select-option value="OR">Office Reward</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Further Instructions</label>
+      <textarea class="form-control" [(ngModel)]="transfertInstruction.instructions" name="instruction" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <button class="btn btn-dark btn-lg mt-3" (click)="askConfirmation(transfertInstruction)">
+      Transfer
+    </button>
+  </form>
+  
+  <div class="container-fluid confirm" *ngIf="hasToTransfer">
+    <label>You trying to fransfert <br> an amount of : {{transfertInstruction.amount | currency}}</label>
+    <label>To the beneficer : {{transfertInstruction.beneficer}}</label>
+    <label><b>Are you sure to confirm this transaction</b></label>
+    <div class="row">
+      <div class="col-6">
+        <button (click)="confirmTransaction()" class="btn btn-success">Confirm</button></div>
+        <div class="col-6">
+          <button (click)="cancelTransaction()" class="btn btn-default bg-light">Cancel</button>
+        </div>
+        
+      
+    </div>
+    
+    
+  </div>
+</div>
