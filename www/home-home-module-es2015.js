@@ -190,6 +190,7 @@ let HomePage = class HomePage {
                             console.log('moncash');
                         }
                         else if (this.reedemMethod === 'PayPal') {
+                            console.log('Paypal');
                             this.payPal.init({
                                 PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
                                 PayPalEnvironmentSandbox: 'YOUR_SANDBOX_CLIENT_ID'
